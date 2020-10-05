@@ -13,8 +13,8 @@ public:
     ~Contact();
     string getName();
     int getPhone();
-    void setName();
-    void setPhone();
+    void setName(string n);
+    void setPhone(int num);
 
     void print();
 }
