@@ -21,8 +21,8 @@ void Phonebook::del() {
 
 }
 
-void Phonebook::search() {
-
+void Phonebook::search(string name) {
+    cout << "Phone Number: " << 12345 << endl;
 }
 
 void Phonebook::list() {
