@@ -5,16 +5,18 @@ class Contact
 {
 private:
     string name;
-    int phone;
+    string phone;
     
 public:
     Contact();
-    Contact(string n, int num);
+    Contact(string n, string num);
     ~Contact();
+
     string getName();
-    int getPhone();
+    string getPhone();
+    
     void setName(string n);
-    void setPhone(int num);
+    void setPhone(string num);
 
     void print();
-}
+};

@@ -4,22 +4,23 @@ using namespace std;
 
 Contact::Contact() {
     name = "";
-    phone = 0;
+    phone = "";
 }
 
-Contact::Contact(string n, int num) {
+Contact::Contact(string n, string num) {
     name = n;
     phone = num;
 }
 
-Contact::~Contact() {
+Contact::~Contact() {       // destructor
+
 }
 
 string Contact::getName() {
     return name;
 }
 
-int Contact::getPhone() {
+string Contact::getPhone() {
     return phone;
 }
 
@@ -27,7 +28,10 @@ void Contact::setName(string n) {
     name = n;
 }
 
-void Contact::setPhone(int num) {
+void Contact::setPhone(string num) {
     phone = num;
 }
 
+void Contact::print() {
+    cout << name << " " << phone << endl;
+}
