@@ -1,24 +1,22 @@
 #include <string>
+#include "Contact.h"
 using namespace std;
 
 class Phonebook
 {
 private:
-    Contact arr[];
+    Contact* arr;
     int size;
     
 public:
     Phonebook();
-    Phonebook(int size);
+    // Phonebook(int size);
     ~Phonebook();
 
+    void add(Contact c);
     void search();
-    void add();
-    void list();
     void del();
-    
-    // void setName(string n);
-    // void setPhone(string num);
+    void list();
 
     // void print();
 };
