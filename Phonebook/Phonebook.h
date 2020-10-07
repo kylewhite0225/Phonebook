@@ -15,7 +15,7 @@ public:
 
     void add(Contact c);
     string search(string name);
-    void del();
+    void del(string del);
     void list();
 
     // void print();

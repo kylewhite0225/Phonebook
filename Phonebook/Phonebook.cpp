@@ -17,8 +17,20 @@ void Phonebook::add(Contact c) {
     size++;
 }
 
-void Phonebook::del() {
-
+void Phonebook::del(string del) {
+    // search for del in array
+    int i;
+    for (i = 0; i < size; i++) {
+        if (arr[i].getName() == del) {
+            break;
+        }
+    }
+    if (i < size) {
+        size--;
+        for (int j = i; j < size; j++) {
+            arr[j] = arr[j+1];
+        }
+    }
 }
 
 string Phonebook::search(string name) {

@@ -47,12 +47,19 @@ void menu(Phonebook book) {
                 break;
             }
             case 'D' : {
-                cout << "D" << endl;
-                // deal with D
+                string fName;
+                string lName;
+                cout << "Enter name: ";
+                cin >> fName >> lName;
+                string del = fName + " " + lName;
+                for (int i = 0; i < del.length(); i++) {
+                    char ch = del[i];
+                    del[i] = toupper(ch); 
+                }
+                book.del(del);
                 break;
             }
             case 'L' : {
-                // cout << "L" << endl;
                 book.list();
                 break;
             }
