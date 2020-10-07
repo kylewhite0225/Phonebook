@@ -21,8 +21,13 @@ void Phonebook::del() {
 
 }
 
-void Phonebook::search(string name) {
-    cout << "Phone Number: " << 12345 << endl;
+string Phonebook::search(string name) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i].getName() == name) {
+            return arr[i].getPhone();
+        }
+    }
+    return "Not Found.";
 }
 
 void Phonebook::list() {

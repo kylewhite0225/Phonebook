@@ -33,10 +33,17 @@ void menu(Phonebook book) {
                 break;
             }
             case 'S' : {
-                string search;
+                string fName;
+                string lName;
                 cout << "Enter name: ";
-                cin >> search;
-                book.search(search);
+                cin >> fName >> lName;
+                string search = fName + " " + lName;
+                for (int i = 0; i < search.length(); i++) {
+                    char ch = search[i];
+                    search[i] = toupper(ch); 
+                }
+                // cout << search << endl;
+                cout << "Phone Number: " << book.search(search) << endl;
                 break;
             }
             case 'D' : {

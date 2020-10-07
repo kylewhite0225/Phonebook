@@ -14,7 +14,7 @@ public:
     ~Phonebook();
 
     void add(Contact c);
-    void search(string name);
+    string search(string name);
     void del();
     void list();
 
