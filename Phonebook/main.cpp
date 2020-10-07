@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 // #include "Contact.h"
 #include "Phonebook.h"
 using namespace std;
@@ -13,37 +14,47 @@ void menu(Phonebook book) {
         cout << "A(Add) | S (Search) | D(Delete) | L(List) | Q(Quit): ";
         cin >> select;
         select = toupper(select);
-        string inputName;
-        string inputNumber;
         switch (select) {
-            case 'A' :
-                //deal with A
-                // string inputName;
-                // string phoneNumber;
+            case 'A' :{
+                string inputFName;
+                string inputLName;
+                string inputNumber;
                 cout << "Enter name: ";
-                cin >> inputName;
+                cin >> inputFName >> inputLName;
                 cout << "Enter phone: ";
                 cin >> inputNumber;
-                inputName = "";
-                inputNumber = "";
+                string inputName = inputFName + " " + inputLName;
+                for (int i = 0; i < inputName.length(); i++) {
+                    char ch = inputName[i];
+                    inputName[i] = toupper(ch); 
+                }
+                Contact tempContact = Contact(inputName, inputNumber);
+                book.add(tempContact);
                 break;
-            case 'S' :
-                // cout << "s" << endl;
-                // DEAL WITH S
+            }
+            case 'S' : {
+                string search;
+                cout << "Enter name: ";
+                cin >> search;
+                book.search(search);
                 break;
-            case 'D' :
+            }
+            case 'D' : {
                 cout << "D" << endl;
                 // deal with D
                 break;
-            case 'L' :
+            }
+            case 'L' : {
                 // cout << "L" << endl;
                 book.list();
                 break;
-            case 'Q' :
+            }
+            case 'Q' : {
                 cout << "Q" << endl;
                 quit = true;
-                //writeContact();
+                //writePhonebook();
                 break;
+            }
         }
         cout << "\n" << endl;
     }
@@ -60,10 +71,13 @@ Phonebook readPhonebook() {
         file >> fname >> lname >> phone;
         string name = fname + " " + lname;
         Contact tempName = Contact(name, phone);
-        // tempName = Contact(name, phone);
         phBook.add(tempName);
     }
     return phBook;
+}
+
+void writePhonebook(Phonebook book) {
+    
 }
 
 int main() {
