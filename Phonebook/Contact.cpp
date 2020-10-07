@@ -3,8 +3,8 @@
 using namespace std;
 
 Contact::Contact() {
-    name = "";
-    phone = "";
+    name;// = "";
+    phone;// = "";
 }
 
 Contact::Contact(string n, string num) {
