@@ -1,24 +1,33 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-// #include "Contact.h"
 #include "Phonebook.h"
 using namespace std;
 
+Phonebook* readPhonebook() {
+    Phonebook* phBook = new Phonebook();
+    ifstream file;
+    file.open("Phonebook.txt");
+    while (!file.eof()) {
+        string fname, lname, phone;
+        file >> fname >> lname >> phone;
+        if (fname == "") {  // fix later maybe
+            break;
+        }
+        string name = fname + " " + lname;
+        Contact tempName = Contact(name, phone);
+        phBook->add(tempName);
+    }
+    return phBook;
+}
+
 void writePhonebook(Phonebook book) {
-    // int a = 10, b = 45;
-    // string fname = "KYLE";
-    // string lname = "WHITE";
-    // int phone = 1234567;
-    // ofstream outfile("out.txt");
-    // outfile << a << " " << b << endl;
-    // outfile << fname << " " << lname << " " << phone << endl;
-    // outfile << a << " " << b << endl;
-    ofstream outfile("Phonebook.txt");
+    ofstream outfile("Phonebook.txt", ios::out | ios::trunc);
     Contact* arr = book.getArr();
     for (int i = 0; i < book.getSize(); i++) {
         outfile << arr[i].getName() << " " << arr[i].getPhone() << endl;
     }
+    outfile.close();
     delete[] arr;
 }
 
@@ -26,7 +35,6 @@ void menu(Phonebook book) {
     bool quit = false;
     cout << "Please choose an operation: " << endl;
     while (quit == false) {
-        // cout << "Please choose an operation:" << endl;
         char select;
         cout << "A(Add) | S (Search) | D(Delete) | L(List) | Q(Quit): ";
         cin >> select;
@@ -59,7 +67,6 @@ void menu(Phonebook book) {
                     char ch = search[i];
                     search[i] = toupper(ch); 
                 }
-                // cout << search << endl;
                 cout << "Phone Number: " << book.search(search) << endl;
                 break;
             }
@@ -81,36 +88,23 @@ void menu(Phonebook book) {
                 break;
             }
             case 'Q' : {
-                cout << "Q" << endl;
                 quit = true;
                 writePhonebook(book);
                 break;
             }
+            default: {
+                cout << "Not an option. Please try again." << endl;
+                break;
+            }
         }
-        cout << "\n" << endl;
+        cout << endl;
     }
-}
-
-Phonebook readPhonebook() {
-    Phonebook phBook = Phonebook();
-    ifstream file;
-    file.open("test.txt");
-    string fname, lname, phone;
-    string line;
-
-    while (!file.eof()) {
-        file >> fname >> lname >> phone;
-        string name = fname + " " + lname;
-        Contact tempName = Contact(name, phone);
-        phBook.add(tempName);
-    }
-    return phBook;
 }
 
 int main() {
     cout << "*** MY PHONEBOOK APPLICATION ***" << endl;
     // Contact* phonebook = new Contact[200000];   // pass by reference using pointers
-    Phonebook phonebook = readPhonebook();
-    menu(phonebook);
+    Phonebook* phonebook = readPhonebook();
+    menu(*phonebook);
     return 0;
 }
