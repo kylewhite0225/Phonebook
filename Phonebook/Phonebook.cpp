@@ -48,5 +48,13 @@ void Phonebook::list() {
     }
 }
 
+int Phonebook::getSize() {
+    return size;
+}
+
+Contact* Phonebook::getArr() {
+    return arr;
+}
+
 // construct array
 // every time you add an element - another integer in phonebook to keep track of size

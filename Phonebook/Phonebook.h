@@ -17,6 +17,8 @@ public:
     string search(string name);
     void del(string del);
     void list();
+    int getSize();
+    Contact* getArr();
 
     // void print();
 };
