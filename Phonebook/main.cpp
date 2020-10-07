@@ -5,6 +5,23 @@
 #include "Phonebook.h"
 using namespace std;
 
+void writePhonebook(Phonebook book) {
+    // int a = 10, b = 45;
+    // string fname = "KYLE";
+    // string lname = "WHITE";
+    // int phone = 1234567;
+    // ofstream outfile("out.txt");
+    // outfile << a << " " << b << endl;
+    // outfile << fname << " " << lname << " " << phone << endl;
+    // outfile << a << " " << b << endl;
+    ofstream outfile("Phonebook.txt");
+    Contact* arr = book.getArr();
+    for (int i = 0; i < book.getSize(); i++) {
+        outfile << arr[i].getName() << " " << arr[i].getPhone() << endl;
+    }
+    delete[] arr;
+}
+
 void menu(Phonebook book) {
     bool quit = false;
     cout << "Please choose an operation: " << endl;
@@ -26,7 +43,7 @@ void menu(Phonebook book) {
                 string inputName = inputFName + " " + inputLName;
                 for (int i = 0; i < inputName.length(); i++) {
                     char ch = inputName[i];
-                    inputName[i] = toupper(ch); 
+                    inputName[i ] = toupper(ch); 
                 }
                 Contact tempContact = Contact(inputName, inputNumber);
                 book.add(tempContact);
@@ -66,7 +83,7 @@ void menu(Phonebook book) {
             case 'Q' : {
                 cout << "Q" << endl;
                 quit = true;
-                //writePhonebook();
+                writePhonebook(book);
                 break;
             }
         }
@@ -88,10 +105,6 @@ Phonebook readPhonebook() {
         phBook.add(tempName);
     }
     return phBook;
-}
-
-void writePhonebook(Phonebook book) {
-    
 }
 
 int main() {
