@@ -2,15 +2,22 @@
 #include "Contact.h"
 using namespace std;
 
+/*
+Name: Phonebook.h
+Author: Kyle White
+Date: 10/9/2020
+Description: Header file for the Phonebook class, which defines
+the private members and all methods.
+*/
+
 class Phonebook
 {
 private:
-    Contact* arr;
+    Contact *pArr;
     int size;
     
 public:
     Phonebook();
-    // Phonebook(int size);
     ~Phonebook();
 
     void add(Contact c);
@@ -19,6 +26,4 @@ public:
     void list();
     int getSize();
     Contact* getArr();
-
-    // void print();
 };
