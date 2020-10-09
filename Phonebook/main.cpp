@@ -18,6 +18,7 @@ Phonebook* readPhonebook() {
         Contact tempName = Contact(name, phone);
         phBook->add(tempName);
     }
+    file.close();
     return phBook;
 }
 
@@ -106,5 +107,6 @@ int main() {
     // Contact* phonebook = new Contact[200000];   // pass by reference using pointers
     Phonebook* phonebook = readPhonebook();
     menu(*phonebook);
+    delete phonebook;
     return 0;
 }

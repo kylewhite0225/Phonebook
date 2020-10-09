@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Phonebook.h"
-// #include "Contact.h"
 using namespace std;
 
 Phonebook::Phonebook() {
@@ -25,6 +24,7 @@ void Phonebook::del(string del) {
             break;
         }
     }
+    // if del is in array, decrease size and shift every value after del to the left
     if (i < size) {
         size--;
         for (int j = i; j < size; j++) {
