@@ -62,10 +62,10 @@ void Phonebook::del(string del) {
     }
     // if del is in array, decrease entries and shift values to the left, removing del
     if (i < entries) {
-        entries--;
         for (int j = i; j < entries; j++) {
             pArr[j] = pArr[j+1];
         }
+        entries--;
     } else if (i == entries) {
         cout << "Not found." << endl;
     }
@@ -86,11 +86,13 @@ string Phonebook::search(string name) {
 }
 
 // The list method utilizes the Contact class's print method to print every contact
-// stored in pArr.
+// stored in pArr up to the 10th element, where it prints a page number and
+// asks the user if they would like to see the next page, previous page, or quit.
 void Phonebook::list() {
     bool quit = false;
     int page = 1;
     cout << endl;
+    // print first 10 elements
     for (int i = 0; i < (10 * page); i++) {
         this->pArr[i].print();
     }
@@ -102,6 +104,8 @@ void Phonebook::list() {
         cout << "N(Next Page) | P(Previous Page) | Q(Return to Menu): ";
         cin >> select;
         select = toupper(select);
+        // The switch case here traverses through the list printing 10 entries
+        // at a time when the user selects either N or P, until the user selects Q to quit.
         switch (select) {
             case 'N' : {
                 page++;
@@ -138,9 +142,6 @@ void Phonebook::list() {
                 break;
         }
     }
-    // for (int i = 0; i< entries; i++) {
-    //     pArr[i].print();
-    // }
 }
 
 // The getEntries method returns the number of values stored in the array.
