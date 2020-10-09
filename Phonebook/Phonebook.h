@@ -15,6 +15,7 @@ class Phonebook
 private:
     Contact *pArr;
     int size;
+    int entries;
     
 public:
     Phonebook();
@@ -24,6 +25,7 @@ public:
     string search(string name);
     void del(string del);
     void list();
+    int getEntries();
     int getSize();
     Contact* getArr();
 };
