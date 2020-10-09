@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <regex>
 #include "Phonebook.h"
 using namespace std;
 
@@ -25,7 +26,7 @@ Phonebook* readPhonebook() {
     while (!file.eof()) {
         string fname, lname, phone;
         file >> fname >> lname >> phone;
-        if (fname == "") {  // fix later maybe
+        if (fname == "") {  // stop reading at last line to prevent duplicate contact
             break;
         }
         string name = fname + " " + lname;
@@ -45,7 +46,7 @@ Phonebook* readPhonebook() {
 void writePhonebook(Phonebook book) {
     ofstream outfile("Phonebook.txt", ios::out | ios::trunc);
     Contact *pArr = book.getArr();
-    for (int i = 0; i < book.getSize(); i++) {
+    for (int i = 0; i < book.getEntries(); i++) {
         outfile << pArr[i].getName() << " " << pArr[i].getPhone() << endl;
     }
     outfile.close();
@@ -75,9 +76,9 @@ void menu(Phonebook book) {
                 string inputNumber;
                 cout << "Enter name: ";
                 cin >> inputFName >> inputLName;
+                string inputName = inputFName + " " + inputLName;
                 cout << "Enter phone: ";
                 cin >> inputNumber;
-                string inputName = inputFName + " " + inputLName;
                 for (int i = 0; i < inputName.length(); i++) {
                     char ch = inputName[i];
                     inputName[i ] = toupper(ch); 
