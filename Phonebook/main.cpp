@@ -74,11 +74,31 @@ void menu(Phonebook book) {
                 string inputFName;
                 string inputLName;
                 string inputNumber;
-                cout << "Enter name: ";
-                cin >> inputFName >> inputLName;
-                string inputName = inputFName + " " + inputLName;
-                cout << "Enter phone: ";
-                cin >> inputNumber;
+                string inputName;
+                bool containsAlpha = false;
+                // do-while loop uses a regex to verify that the user input
+                // contains only the letters A-Z in either case and a space.
+                do {
+                    cout << "Enter name: ";
+                    cin >> inputFName >> inputLName;
+                    inputName = inputFName + " " + inputLName;
+                    containsAlpha = regex_match(inputName, regex("^[A-Za-z ]+$"));
+                    if (containsAlpha == false) {
+                        cout << "Name must include letters only." << endl;
+                    }
+                } while (containsAlpha == false);
+                bool containsNumeral = false;
+                // do-while loop uses a regex to verify that the user input
+                // contains only the digits 0-9.
+                do {
+                    cout << "Enter phone: ";
+                    cin >> inputNumber;
+                    containsNumeral = regex_match(inputNumber, regex("^[0-9]+$"));
+                    if (containsNumeral == false) {
+                        cout << "Phone number must include digits 0-9 only." << endl;
+                    }
+                } while (containsNumeral == false);
+                // Convert inputName to all uppercase
                 for (int i = 0; i < inputName.length(); i++) {
                     char ch = inputName[i];
                     inputName[i ] = toupper(ch); 
@@ -93,9 +113,19 @@ void menu(Phonebook book) {
             case 'S' : {
                 string fName;
                 string lName;
-                cout << "Enter name: ";
-                cin >> fName >> lName;
-                string search = fName + " " + lName;
+                string search;
+                bool containsAlpha = false;
+                //
+                do {
+                    cout << "Enter name: ";
+                    cin >> fName >> lName;
+                    search = fName + " " + lName;
+                    containsAlpha = regex_match(search, regex("^[A-Za-z ]+$"));
+                    if (containsAlpha == false) {
+                        cout << "Name must include letters only." << endl;
+                    }
+                } while (containsAlpha == false);
+                // Convert search to all uppercase
                 for (int i = 0; i < search.length(); i++) {
                     char ch = search[i];
                     search[i] = toupper(ch); 
@@ -111,6 +141,7 @@ void menu(Phonebook book) {
                 cout << "Enter name: ";
                 cin >> fName >> lName;
                 string del = fName + " " + lName;
+                // Convert del to all uppercase
                 for (int i = 0; i < del.length(); i++) {
                     char ch = del[i];
                     del[i] = toupper(ch); 
