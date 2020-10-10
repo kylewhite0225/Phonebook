@@ -22,7 +22,7 @@ names. Writes modified data out to the same file.
 Phonebook* readPhonebook() {
     Phonebook *pBook = new Phonebook();
     ifstream file;
-    file.open("Phonebook.txt");
+    file.open("phonebook.txt");
     while (!file.eof()) {
         string fname, lname, phone;
         file >> fname >> lname >> phone;
@@ -44,7 +44,7 @@ Phonebook* readPhonebook() {
 // contact object stored in the array is written out to the text file, before it is closed
 // and the pointer is deleted.
 void writePhonebook(Phonebook book) {
-    ofstream outfile("Phonebook.txt", ios::out | ios::trunc);
+    ofstream outfile("phonebook.txt", ios::out | ios::trunc);
     Contact *pArr = book.getArr();
     for (int i = 0; i < book.getEntries(); i++) {
         outfile << pArr[i].getName() << " " << pArr[i].getPhone() << endl;
