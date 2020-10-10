@@ -77,7 +77,7 @@ void menu(Phonebook book) {
                 string inputName;
                 bool containsAlpha = false;
                 // do-while loop uses a regex to verify that the user input
-                // contains only the letters A-Z in either case and a space.
+                // contains only the letters A-Z in either case, and a space.
                 do {
                     cout << "Enter name: ";
                     cin >> inputFName >> inputLName;
@@ -115,7 +115,8 @@ void menu(Phonebook book) {
                 string lName;
                 string search;
                 bool containsAlpha = false;
-                //
+                // do-while loop uses a regex to verify that the user input
+                // contains only the letters A-Z in either case, and a space.
                 do {
                     cout << "Enter name: ";
                     cin >> fName >> lName;
