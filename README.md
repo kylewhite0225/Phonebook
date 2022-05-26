@@ -1,5 +1,3 @@
-# CS300Fall20_Assignment1: A phonebook application
-# due 10/9 11:59pm
-CS300 Fall2020 Assignment 1
+# CS300 - Data Structures Fall 2020 Assignment1: A Phonebook Application
 
 See description in the docx/pdf files.
